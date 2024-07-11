@@ -17,6 +17,7 @@
             transition: transform 0.3s, box-shadow 0.3s;
             transform-style: preserve-3d;
             position: relative;
+            backface-visibility: hidden; /* Evita que la cara trasera sea visible */
         }
 
         .imagen::before {
@@ -27,6 +28,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(0, 255, 0, 0.5), rgba(0, 0, 255, 0.5));
+            mix-blend-mode: screen; /* Mezcla el gradiente con la imagen */
             transition: opacity 0.3s, transform 0.3s;
             pointer-events: none;
             opacity: 0;
@@ -41,12 +43,12 @@
             opacity: 1;
         }
     </style>
-
+</head>
+<body>
     <div class="contenedor">
-        
-            <img src="https://kiosrel.neocities.org/reworked-boykisser-a-couple-other-ideas-v0-ot47ebet4nmb1%20PNG.png" alt="Descripci&#xF3;n de la imagen" class="imagen"/>
-      
+        <img src="https://kiosrel.neocities.org/reworked-boykisser-a-couple-other-ideas-v0-ot47ebet4nmb1%20PNG.png" alt="Descripción de la imagen" class="imagen">
     </div>
+   
 
 </body>
 </html>
