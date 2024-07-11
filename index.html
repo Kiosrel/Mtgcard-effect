@@ -8,12 +8,13 @@
         .contenedor {
             position: relative;
             display: inline-block;
-            perspective: 1000px;
+            perspective: 1500px;
         }
 
         .imagen {
             display: block;
-            transition: transform 0.3s, filter 0.3s;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
             transform-style: preserve-3d;
             position: relative;
         }
@@ -25,54 +26,27 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(120deg, rgba(255, 0, 0, 0.5), rgba(0, 255, 0, 0.5), rgba(0, 0, 255, 0.5));
-            mix-blend-mode: hard-light;
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(0, 255, 0, 0.5), rgba(0, 0, 255, 0.5));
             transition: opacity 0.3s, transform 0.3s;
             pointer-events: none;
             opacity: 0;
+        }
+
+        .contenedor:hover .imagen {
+            transform: rotateY(15deg) rotateX(15deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .contenedor:hover .imagen::before {
             opacity: 1;
         }
     </style>
-</head>
-<body>
+
     <div class="contenedor">
-            <img src="https://kiosrel.neocities.org/reworked-boykisser-a-couple-other-ideas-v0-ot47ebet4nmb1%20PNG.png" alt="Descripción de la imagen" class="imagen">
+        
+            <img src="https://kiosrel.neocities.org/reworked-boykisser-a-couple-other-ideas-v0-ot47ebet4nmb1%20PNG.png" alt="Descripci&#xF3;n de la imagen" class="imagen"/>
+      
     </div>
 
-    <script>
-        document.querySelector('.contenedor').addEventListener('mousemove', function(e) {
-            const contenedor = this;
-            const imagen = contenedor.querySelector('.imagen');
-            const rect = contenedor.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const percentX = (x - centerX) / centerX;
-            const percentY = (y - centerY) / centerY;
-            const rotationMax = 15;
-
-            const rotationY = percentX * rotationMax;
-            const rotationX = percentY * -rotationMax;
-
-            imagen.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
-            imagen.style.filter = `saturate(2) brightness(1.2)`;
-
-            // Movemos el gradiente en función de la posición del ratón
-            const gradientMoveX = percentX * 20;
-            const gradientMoveY = percentY * 20;
-            imagen.style.setProperty('--gradient-move-x', `${gradientMoveX}px`);
-            imagen.style.setProperty('--gradient-move-y', `${gradientMoveY}px`);
-        });
-
-        document.querySelector('.contenedor').addEventListener('mouseleave', function() {
-            const imagen = this.querySelector('.imagen');
-            imagen.style.transform = `rotateY(0deg) rotateX(0deg)`;
-            imagen.style.filter = `saturate(1) brightness(1)`;
-        });
-    </script>
 </body>
 </html>
